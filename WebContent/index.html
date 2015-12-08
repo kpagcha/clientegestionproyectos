@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cliente de Servicio Web REST Gestión de Proyectos</title>
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/ws.js"></script>
+<style>
+html, body {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 14px;
+}
+div {
+	margin: 20px 35px;
+	float: left;
+}
+input {
+	display: block;
+	margin-bottom: 15px;
+	outline: none;
+}
+input[type="text"] {
+	width: 230px;
+	padding: 5px 10px;
+	border: 1px solid #8f8f8f;
+	border-radius: 5px;
+}
+input[type="button"], input[type="submit"] {
+	border-radius: 3px;
+	padding: 10px;
+	width: 150px;
+	text-align: center;
+	border: 2px solid transparent;
+	cursor: pointer;
+	backgroud-color: #d8d8d8;
+}
+input[type="button"]:hover, input[type="submit"]:hover {
+	background-color: #ededed;
+}
+table {
+	width: 100%;
+    border-spacing: 0;
+	background-color: #eee;
+	border-radius: 5px;
+}
+tr:nth-child(even) {
+	background-color: #ddd;
+}
+th, td {
+	border: 0px;
+	padding: 10px;
+}
+#key-container {
+	border-bottom: 2px solid #aaa;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width: 90%;
+}
+#inputs-container {
+	width: 270px;
+}
+#buttons-container {
+	width: auto;
+}
+#result {
+	padding: 20px;
+	clear: both;
+}
+</style>
+</head>
+<body>
+	<div id="key-container">
+		<input id="key" type="text" placeholder="Introduce la clave de estudiante"></input>
+	</div>
+	<div id="inputs-container">
+		<form action="http://localhost:8080/GestionProyectos/api/estudiantes/formulario" method="post">
+			<input id="nombre" name="nombre" type="text" placeholder="Nombre"></input>
+			<input id="primerApellido" name="primerApellido" type="text" placeholder="Primer apellido"></input>
+			<input id="segundoApellido" name="segundoApellido" type="text" placeholder="Segundo apellido"></input>
+			<input id="tituloProyecto" name="tituloProyecto" type="text" placeholder="Título del proyecto"></input>
+			<input id="tutor1" name="tutor1" type="text" placeholder="Tutor 1"></input>
+			<input id="tutor2" name="tutor2" type="text" placeholder="Tutor 2"></input>
+			<input id="estadoProyecto" name="estadoProyecto" type="text" placeholder="Estado del proyecto"></input>
+			<input id="fechaPresentacionProyecto" name="fechaPresentacionProyecto" type="text" placeholder="Fecha de presentación del proyecto"></input>
+			<input id="calificacionProyecto" name="calificacionProyecto" type="text" placeholder="Calificación del proyecto"></input>
+			<input type="submit" name="" value="Enviar formulario">
+		</form>
+	</div>
+	<div id="buttons-container">
+		<input type="button" value="Lista Estudiantes" onclick="getAllEstudiantes()">
+		<input type="button" value="Buscar Estudiante" onclick="getEstudiante()">
+		<input type="button" value="Crear Estudiante" onclick="createEstudiante()">
+		<input type="button" value="Actualizar Estudiante" onclick="updateEstudiante()">
+		<input type="button" value="Eliminar Estudiante" onclick="deleteEstudiante()">
+	</div>
+	<div id="result"></div>
+</body>
+</html>
